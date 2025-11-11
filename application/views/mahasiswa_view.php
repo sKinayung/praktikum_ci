@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>Mahasiswa oleh Nama dan NIM</title>
-    <!-- Link Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        /* Membuat halaman penuh agar footer bisa menempel di bawah */
         html, body {
             height: 100%;
         }
@@ -22,12 +21,10 @@
             background-color: #0300b1ff !important;
         }
 
-        /* Konten utama agar bisa mengisi ruang sebelum footer */
         .content {
             flex: 1;
         }
 
-        /* Footer tetap di bawah halaman */
         footer {
             position: fixed;
             bottom: 0;
@@ -43,21 +40,20 @@
 
 <body>
     <div class="content container mt-3 mb-5">
-
-        <!-- Header dengan box biru tua -->
         <div class="text-center mb-4 bg-darkblue text-white p-4 rounded-3 shadow-sm">
             <h1 class="fw-bold mb-2">Selamat Datang di Universitas FYP</h1>
             <p class="mb-0">Daftar Mahasiswa berdasarkan NIM dan Nama</p>
         </div>
 
-        <!-- Tombol Tambah -->
-        <div class="d-flex justify-content-end mb-3">
+        <div class="d-flex justify-content-end mb-3 gap-2">
             <a href="<?php echo site_url('mahasiswa/tambah') ?>" class="btn btn-success">
                 <i class="bi bi-plus-circle"></i> Tambah Data Mahasiswa
             </a>
+            <a href="<?php echo site_url('mahasiswa/cetak') ?>" class="btn btn-primary" target="_blank">
+                <i class="bi bi-printer"></i> Cetak Data Mahasiswa
+            </a>
         </div>
 
-        <!-- Tabel Mahasiswa -->
         <div class="card shadow-sm">
             <div class="card-body">
                 <table class="table table-bordered table-striped table-hover align-middle text-center">
@@ -71,9 +67,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        $no = 1;
-                        foreach ($mahasiswa as $row) { ?>
+                        <?php $no = 1; foreach ($mahasiswa as $row) { ?>
                             <tr>
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $row->nim ?></td>
@@ -85,7 +79,9 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="<?php echo site_url('mahasiswa/hapus/' . $row->id_mahasiswa) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                    <a href="<?php echo site_url('mahasiswa/hapus/' . $row->id_mahasiswa) ?>"
+                                       class="btn btn-danger btn-sm"
+                                       onclick="return confirm('Yakin ingin menghapus data ini?')">
                                         Hapus
                                     </a>
                                 </td>
@@ -95,17 +91,13 @@
                 </table>
             </div>
         </div>
-
     </div>
 
-    <!-- Footer sticky -->
     <footer>
         <p class="mb-0 fw-semibold">Dibuat Oleh : Satriyo Kinayung - 2310010617</p>
     </footer>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- (Opsional) Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </body>
 </html>

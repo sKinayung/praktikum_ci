@@ -89,6 +89,12 @@ class Mahasiswa extends CI_Controller {
         $this->Mahasiswa_model->hapus($id);
         redirect('mahasiswa');
     }
+
+    // Print
+    public function cetak (){
+        $data['mahasiswa'] = $this->Mahasiswa_model->lihatData(); // Mengambil semua data mahasiswa
+        $this->load->view('mahasiswa_print', $data); // Memuat view dan mengirim data
+    }
 }
 
 ?>
